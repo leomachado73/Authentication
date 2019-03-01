@@ -31,6 +31,6 @@ endif()
 
 add_subdirectory(opt)
 
-add_executable(example example.cpp)
+add_executable(example main.cpp Authentication/BaseAuthentication.cpp Authentication/BaseAuthentication.h Authentication/AuthenticationResult.h Authentication/ServiceAuthentication.cpp Authentication/ServiceAuthentication.h Authentication/AuthenticationException.h Authentication/Authentication.cpp Authentication/Authentication.h Authentication/DevAuthentication.cpp Authentication/DevAuthentication.h)
 target_link_libraries(example ${CPR_LIBRARIES})
-include_directories(${CPR_INCLUDE_DIRS} ${JSON_INCLUDE_DIRS})
+include_directories(${CPR_INCLUDE_DIRS} ${JSON_INCLUDE_DIRS} ${JWT_INCLUDE_DIRS})

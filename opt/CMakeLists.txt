@@ -1,4 +1,5 @@
 set(JSON_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/json/src PARENT_SCOPE)
+set(JWT_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/jwt-cpp/include/jwt-cpp PARENT_SCOPE)
 
 if(WIN32)
     option(CMAKE_USE_OPENSSL "Use OpenSSL code. Experimental" OFF)
