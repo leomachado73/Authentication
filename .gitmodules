@@ -1,9 +1,12 @@
 [submodule "opt/cpr"]
 	path = opt/cpr
-	url = git://github.com/whoshuu/cpr.git
+	url = git@github.com:leomachado73/cpr.git
+	branch = master
 [submodule "opt/json"]
 	path = opt/json
 	url = git://github.com/nlohmann/json.git
+	branch = master
 [submodule "opt/jwt-cpp"]
 	path = opt/jwt-cpp
-	url = https://github.com/Thalhammer/jwt-cpp
+	url = git@github.com:Thalhammer/jwt-cpp.git
+	branch = master
