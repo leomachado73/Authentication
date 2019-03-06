@@ -15,7 +15,6 @@ AuthenticationResult DevAuthentication::authenticate(const std::string &username
     AuthenticationResult result;
     UserResult user;
 
-    user.setId(1);
     user.setUuid("");
     user.setUsername(username);
     user.setAuthorizationId(6);

@@ -37,7 +37,6 @@ enum LoginResult
 class UserResult
 {
 private:
-    int id;
     std::string uuid;
     std::string username;
     int authorizationId;
@@ -48,24 +47,12 @@ public:
     {
     }
 
-    UserResult(int id, const std::string &uuid, const std::string &username, int authorizationId, bool banned)
+    UserResult(const std::string &uuid, const std::string &username, int authorizationId, bool banned)
     {
-        this->id = id;
         this->uuid = uuid;
         this->username = username;
         this->authorizationId = authorizationId;
         this->banned = banned;
-    }
-
-
-    int getId() const
-    {
-        return id;
-    }
-
-    void setId(int id)
-    {
-        UserResult::id = id;
     }
 
     const std::string &getUuid() const
@@ -110,8 +97,10 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const UserResult &result)
     {
-        os << "id: " << result.id << " uuid: " << result.uuid << " username: " << result.username
-           << " authorizationId: " << result.authorizationId << " banned: " << result.banned;
+        os << "uuid: " << result.uuid << std::endl
+           << "username: " << result.username << std::endl
+           << "authorizationId: " << result.authorizationId << std::endl
+           << "banned: " << result.banned << std::endl;
         return os;
     }
 

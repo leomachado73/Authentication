@@ -14,7 +14,7 @@
 using namespace std;
 using namespace nlohmann;
 
-const std::string ENDPOINT_ACCOUNT_SERVICE = "http://127.0.0.1:3000/account";
+const std::string ENDPOINT_ACCOUNT_SERVICE = "http://127.0.0.1:3000";
 
 ServiceAuthentication::~ServiceAuthentication()
 {
@@ -26,9 +26,9 @@ AuthenticationResult ServiceAuthentication::authenticate(const std::string &user
 
     try
     {
-        auto response = cpr::Post(cpr::Url{ ENDPOINT_ACCOUNT_SERVICE + "/login" }, // Route to Login
+        auto response = cpr::Post(cpr::Url{ ENDPOINT_ACCOUNT_SERVICE + "/account/login" }, // Route to Login
                                   cpr::Timeout{ 2 * 1000 }, // Throw exception if server does not send a response in 2 seconds
-                                  cpr::Authentication{ user: username, password: password }); // Username and Password to Log In
+                                  cpr::Authentication{ username, password }); // Username and Password to Log In
 
         // Throw exception if something went wrong with the request. For example: ENDPOINT refused the connection
         if (response.error)
@@ -60,8 +60,7 @@ AuthenticationResult ServiceAuthentication::authenticate(const std::string &user
                 auto jwt = jwt::decode(response_json["data"]);
                 auto payload = json::parse(jwt.get_payload());
 
-                UserResult user(payload["id"],
-                                payload["uuid"].get<std::string>(),
+                UserResult user(payload["uuid"].get<std::string>(),
                                 payload["user"].get<std::string>(),
                                 payload["authorizationId"],
                                 payload["banned"].get<int>() != 0);
